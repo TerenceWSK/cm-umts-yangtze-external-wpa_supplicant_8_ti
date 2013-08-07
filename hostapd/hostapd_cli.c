@@ -18,6 +18,7 @@
 #include <cutils/properties.h>
 #endif /* ANDROID */
 
+#define SOFTAP_PROP_NAME "softap.interface"
 
 static const char *hostapd_cli_version =
 "hostapd_cli v" VERSION_STR "\n"
@@ -1119,7 +1120,7 @@ int main(int argc, char *argv[])
 #ifdef ANDROID
 			else {
 				char ifprop[PROPERTY_VALUE_MAX];
-				int res = property_get("ap.interface", ifprop,
+				int res = property_get(SOFTAP_PROP_NAME, ifprop,
 						       NULL);
 				if (!res) {
 					ctrl_ifname = os_strdup(ifprop);
